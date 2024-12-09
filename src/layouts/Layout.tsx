@@ -1,35 +1,27 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Layout, theme, Dropdown, MenuProps } from "antd";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { useNavigate, Outlet } from "react-router-dom";
 import { RouterLinks } from "../const/RouterLinks";
-// import { AppContext } from "../context/appContext";
 import Sidebar from "./sider/sider";
 import AppHeader from "./Header";
 import "./Layout.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowRightFromBracket,
-  faUserCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 const { Content, Header } = Layout;
 
 const MainLayout: React.FC = () => {
   const navigate = useNavigate();
-  // const { socket } = useContext(AppContext);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  const token = localStorage.getItem("token");
 
-  if (!token) {
-    return <Navigate to={"/login"} />;
-  }
-
+  // Hàm đăng xuất (nếu cần)
   const hanldeLogout = () => {
     localStorage.clear();
     navigate(RouterLinks.LOGIN);
   };
+
   const items: MenuProps["items"] = [
     {
       label: (
@@ -67,7 +59,6 @@ const MainLayout: React.FC = () => {
                 cursor: "pointer",
               }}
             >
-              {/* <UserOutlined  style={{marginRight:"5px", fontSize:"20px"}}/> */}
               <FontAwesomeIcon
                 icon={faUserCircle}
                 style={{ marginRight: "5px", fontSize: "25px", color: "gray" }}
