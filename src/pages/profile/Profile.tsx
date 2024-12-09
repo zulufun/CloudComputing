@@ -99,7 +99,7 @@ const UserProfile: React.FC = () => {
   <Row gutter={[16, 16]} justify="center">
     <Col xs={24} sm={12} md={12}>
       <Card hoverable style={{ borderRadius: "10px", textAlign: "center", height: "100%" }}>
-        <Title level={4}>Hệ Thống Giám Sát Mạng</Title>
+        <Title level={4}>Hệ Thống Web app </Title>
         <Paragraph>
           Phát triển hệ thống sử dụng <strong>Zeek</strong>, <strong>MongoDB</strong>, và <strong>RITA</strong> để phân tích lưu lượng mạng.
         </Paragraph>
@@ -119,7 +119,7 @@ const UserProfile: React.FC = () => {
 
     <Col xs={24} sm={12} md={12}>
       <Card hoverable style={{ borderRadius: "10px", textAlign: "center", height: "100%" }}>
-        <Title level={4}>Ứng Dụng Phân Tích Gói Tin</Title>
+        <Title level={4}>Ứng Dụng Phân Tích</Title>
         <Paragraph>
           Phát triển ứng dụng sử dụng <strong>PyShark</strong> và <strong>Scapy</strong> để bắt và phân tích gói tin thời gian thực.
         </Paragraph>

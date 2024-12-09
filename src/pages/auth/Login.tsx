@@ -13,35 +13,53 @@ const Login = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
 
+  // const onFinish = async (value: any) => {
+  //   // localStorage.setItem("username", "hoangnam");
+  //   // localStorage.setItem("name", "Hoàng Nam");
+  //   // localStorage.setItem("token", "ok");
+  //   // navigate(RouterLinks.KIEM_TRA_WEBSITE);
+  //     try {
+  //       const res = await authService.login(value);
+  //       console.log(res)
+  //       if (res.status) {
+  //         //Bỏ qua phần này để pass login
+  //         console.log("res.status", res.data.name)
+  //         ///
+  //         // localStorage.setItem("role", res.data.id_position)
+  //         // localStorage.setItem("username", res.data.TaiKhoan)
+  //         // localStorage.setItem("name", res.data.name)
+  //         // localStorage.setItem("token", res.data.access_token)
+  //         // localStorage.setItem("refresh_token", res.data.refresh_token)
+  //         localStorage.setItem("username", "admin");
+  //         localStorage.setItem("name", "Đức Phúc");
+  //         localStorage.setItem("token", "ok");
+  //         navigate(RouterLinks.PROFILE);
+  //   // navigate(RouterLinks.KIEM_TRA_WEBSITE)
+  //       } else {
+  //         message.error(res.message)
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //       message.error("Đăng nhập thất bại")
+  //     }
+  // };
   const onFinish = async (value: any) => {
-    // localStorage.setItem("username", "hoangnam");
-    // localStorage.setItem("name", "Hoàng Nam");
-    // localStorage.setItem("token", "ok");
-    // navigate(RouterLinks.KIEM_TRA_WEBSITE);
-      try {
-        const res = await authService.login(value);
-        console.log(res)
-        if (res.status) {
-          console.log("res.status", res.data.name)
-          // localStorage.setItem("role", res.data.id_position)
-          // localStorage.setItem("username", res.data.TaiKhoan)
-          // localStorage.setItem("name", res.data.name)
-          // localStorage.setItem("token", res.data.access_token)
-          // localStorage.setItem("refresh_token", res.data.refresh_token)
-          localStorage.setItem("username", "admin");
-          localStorage.setItem("name", "Đức Phúc");
-          localStorage.setItem("token", "ok");
-          navigate(RouterLinks.KIEM_TRA_WEBSITE);
-    // navigate(RouterLinks.KIEM_TRA_WEBSITE)
-        } else {
-          message.error(res.message)
-        }
-      } catch (err) {
-        console.log(err);
-        message.error("Đăng nhập thất bại")
-      }
+    try {
+      // Bỏ qua gọi API xác thực và gán trực tiếp thông tin người dùng
+      localStorage.setItem("username", "admin");
+      localStorage.setItem("name", "Đức Phúc");
+      localStorage.setItem("token", "ok");
+  
+      // Chuyển hướng đến trang kiểm tra website
+      navigate(RouterLinks.PROFILE);
+  
+      // Hiển thị thông báo đăng nhập thành công
+      messageApi.success("Đăng nhập thành công!");
+    } catch (err) {
+      console.log(err);
+      message.error("Đăng nhập thất bại");
+    }
   };
-
   return (
     <div className="login">
       {contextHolder}
@@ -73,7 +91,8 @@ const Login = () => {
               fontFamily: "cursive",
             }}
           >
-            Hệ thống phát hiện nhạy cảm
+            Hệ thống Demo môn điện toán đám mây
+      
           </div>
           <div style={{ margin: "30px", width: "75%" }}>
             <Form onFinish={onFinish} form={form} layout="vertical">
